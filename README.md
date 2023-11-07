@@ -2,4 +2,4 @@
 
 Enjoy ‼️‼️‼️
 
-![image](https://github.com/JimmJam/NixFiles/assets/34753734/cdde699f-1338-419a-9330-260783cdce5c)
+![image](https://github.com/JimmJam/ArchFiles/assets/34753734/03f2a0c3-d585-4935-8ee6-2b29df1dcf67)
