@@ -1,0 +1,39 @@
+# Define monitors as variables (affects everywhere)
+set $m HDMI-A-1
+set $l DP-1
+set $r DP-2
+
+# Define wallpaper folder for ultrawide
+set $wide Deerwide
+
+# Define displays
+output $m {
+  pos 1920 405 mode 1920x1080@119.982Hz
+  max_render_time 3
+  bg "$HOME/Pictures/Wallpapers/Split/$wide/1.png" fill
+  adaptive_sync on
+}
+
+output $l {
+  pos 0 405 mode 1920x1080@75.001Hz
+  max_render_time 3
+  bg "$HOME/Pictures/Wallpapers/Split/$wide/2.png" fill
+}
+
+output $r {
+  pos 3840 0 mode 1680x1050@59.883Hz transform 270
+  max_render_time 3
+  bg "$HOME/Pictures/Wallpapers/Split/$wide/3.png" fill
+}
+
+# Define cursor rules
+input 9610:4103:SINOWEALTH_Game_Mouse {
+  accel_profile "flat"
+  pointer_accel -0.4
+}
+
+# Define cursor rules
+input 9639:64097:Compx_2.4G_Receiver_Mouse {
+  accel_profile "flat"
+  pointer_accel -0.4
+}

@@ -1,0 +1,46 @@
+#!/usr/bin/env bash
+
+# Allow user services to know which display to use
+systemctl --user import-environment WAYLAND_DISPLAY
+
+# Set GTK app variables
+dwrite="dconf write /org/gnome/desktop/interface"
+$dwrite/font-name "'Ubuntu 11'"
+$dwrite/gtk-theme "'AD-Plum-3.38'"
+$dwrite/icon-theme "'Papirus-Dark'"
+$dwrite/cursor-theme "'Simp1e-Dark'"
+$dwrite/clock-format "'12h'"
+$dwrite/color-scheme "'prefer-dark'"
+
+# Set default apps
+xdg-mime default pcmanfm-qt.desktop inode/directory
+xdg-mime default nvim.desktop text/plain
+xdg-mime default imv.desktop image/png
+xdg-mime default imv.desktop image/jpeg
+
+# Scratchpads
+kitty --class=gotop -o font_size=14 gotop &
+kitty --class=music -o font_size=14 ranger &
+pavucontrol &
+easyeffects &
+
+# Start daemons and tray apps
+pkill -f alarms.sh; $alarmfolder/alarms.sh &
+wl-paste -t text --watch clipman store &
+wl-copy &
+blueman-applet &
+mako &
+sunshine &
+
+# Start polkit agent
+/usr/lib/mate-polkit/polkit-mate-authentication-agent-1 &
+$(ls -d /nix/store/* | grep 'mate-polkit' | grep -v 'drv')\
+/libexec/polkit-mate-authentication-agent-1 &
+
+# Start foreground apps
+$waybarcfg/start.sh &
+librewolf -P Variety --name=Variety &
+kitty --class=serverdash kitten ssh 192.168.1.17 -t "tmux attach -t control" &
+
+# Change to workspace 1
+swaymsg workspace 1:1

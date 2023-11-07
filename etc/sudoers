@@ -1,0 +1,6 @@
+# Allow root and the wheel group to execute all commands
+root ALL=(ALL:ALL) ALL
+%wheel ALL=(ALL) ALL
+
+# Allow wheel to execute certain commands without a password
+%wheel ALL=(ALL) NOPASSWD: /sbin/shutdown, /sbin/reboot, /usr/bin/apt

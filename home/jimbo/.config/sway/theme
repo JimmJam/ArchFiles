@@ -1,0 +1,35 @@
+# Font for window titles.
+font pango:Ubuntu 9
+
+# Borders, gaps, titlebars, behavior
+default_border pixel 3
+default_floating_border pixel 3
+gaps inner 5
+titlebar_padding 5 1
+
+# Smart things
+smart_gaps on
+hide_edge_borders --i3 smart
+
+# SwayFX eyecandy
+blur enable
+blur_passes 3
+blur_radius 5
+
+# Set transparency rules
+layer_effects 'rofi' blur enable
+layer_effects 'notifications' blur enable; blur_ignore_transparent enable
+
+# Border colors
+set $primecol #8800FF
+set $accentcol #5700a0
+set $splitcol #69507f
+set $actsplitcol #cd97fc
+set $darkcol #202020
+set $urgentcol #9e3c3c
+set $realwhite #C7D3E3
+
+client.focused          $primecol 	$primecol 	$realwhite	$actsplitcol	$primecol
+client.focused_inactive $accentcol 	$accentcol 	$realwhite	$splitcol 	$accentcol
+client.unfocused        $darkcol 	$darkcol 	$realwhite	$splitcol	$splitcol
+client.urgent           $urgentcol 	$urgentcol 	$realwhite	$urgentcol 	$urgentcol

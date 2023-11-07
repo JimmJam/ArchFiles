@@ -1,0 +1,19 @@
+# Sway config (Jimbo, 2023-10-18)
+
+# Autostart programs
+exec ~/.config/sway/programs
+
+# Define monitors and mice
+include ~/.config/sway/hardware
+
+# Assign workspaces to monitors
+include ~/.config/sway/workspaces
+
+# Define theming rules
+include ~/.config/sway/theme
+
+# Define all keybindings
+include ~/.config/sway/hotkeys
+
+# Define all window rules
+include ~/.config/sway/rules

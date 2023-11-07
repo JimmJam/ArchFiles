@@ -1,0 +1,45 @@
+# Define workspace names as variables
+set $ws0 0:0
+set $ws1 1:1
+set $ws2 2:2
+set $ws3 3:3
+set $ws1+ 11:I
+set $ws2+ 22:II
+set $ws3+ 33:III
+
+set $ws4 4:4
+set $ws5 5:5
+set $ws6 6:6
+set $ws4+ 44:IV
+set $ws5+ 55:V
+set $ws6+ 66:VI
+
+set $ws7 7:7
+set $ws8 8:8
+set $ws9 9:9
+set $ws7+ 77:VII
+set $ws8+ 88:VIII
+set $ws9+ 99:IX
+
+# Put the workspaces where they need to be
+workspace $ws0 output $m
+workspace $ws1 output $m
+workspace $ws2 output $m
+workspace $ws3 output $m
+workspace $ws1+ output $m
+workspace $ws2+ output $m
+workspace $ws3+ output $m
+
+workspace $ws4 output $l
+workspace $ws5 output $l
+workspace $ws6 output $l
+workspace $ws4+ output $l
+workspace $ws5+ output $l
+workspace $ws6+ output $l
+
+workspace $ws7 output $r
+workspace $ws8 output $r
+workspace $ws9 output $r
+workspace $ws7+ output $r
+workspace $ws8+ output $r
+workspace $ws9+ output $r

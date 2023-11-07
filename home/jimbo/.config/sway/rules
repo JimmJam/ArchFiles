@@ -1,0 +1,43 @@
+# Behavioral rules
+title_align center
+focus_on_window_activation focus
+
+# Scratchpads
+for_window [app_id="gotop"] floating enable, sticky enable, move scratchpad, resize set 1200 900
+for_window [app_id="music"] floating enable, sticky enable, move scratchpad, resize set 1000 650
+for_window [app_id="replay"] floating enable, sticky enable, move scratchpad, resize set 1000 650
+for_window [app_id="pavucontrol"] floating enable, sticky enable, move scratchpad, resize set 1000 800, opacity 0.9
+for_window [app_id="com.github.wwmm.easyeffects"] floating enable, sticky enable, move scratchpad, resize set 1000 800, opacity 0.9
+for_window [app_id="Hiddenlol"] move scratchpad
+
+# Give apps that don't have them borders
+for_window [class="feh"] fullscreen disable, border pixel 3
+for_window [app_id="com.github.wwmm.easyeffects"] border pixel 3
+for_window [class="steam"] border pixel 3
+for_window [app_id="gnome-disks"] border pixel 3
+for_window [app_id="swappy"] border pixel 3
+for_window [app_id="virt-manager"] border pixel 3
+for_window [window_role="pop-up"] border pixel 3
+
+# No focus apps
+no_focus [class="FreeTube"]
+no_focus [app_id="looking-glass-client"]
+
+# Neither boders nor scratchpads
+for_window [app_id="smb"] floating enable
+for_window [app_id="cmst"] floating enable
+for_window [app_id="float"] floating enable
+for_window [app_id="looking-glass-client"] fullscreen enable
+for_window [title="^GlobalShot"] floating enable, fullscreen enable global
+
+# Assign apps to workspaces
+assign [app_id="smb"] $ws1
+assign [app_id="JimboBrowser"] $ws1
+assign [app_id="SchoolBrowser"] $ws1+
+assign [class="steam"] $ws2
+assign [class="heroic"] $ws2
+assign [app_id="looking-glass-client"] $ws2+
+assign [app_id="com.obsproject.Studio"] $ws4+
+assign [app_id="serverdash"] $ws4
+assign [app_id="Variety"] $ws7
+assign [class="zoom"] $ws6+

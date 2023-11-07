@@ -1,0 +1,129 @@
+@define-color primecolor #8800FF;
+@define-color secondcolor #202020;
+
+* {
+    border: 0;
+    border-radius: 0;
+    min-height: 0;
+    font-family: Ubuntu, UbuntuMono Nerd Font;
+    color: #C7D3E3;
+}
+
+.bar1,.bar2,.bar3 {
+    font-size: 15.5px;
+}
+
+#waybar {
+    background: @secondcolor;
+}
+
+#workspaces {
+    padding: 0 6px 0 0;
+}
+
+#tray {
+    padding: 0 4px 0 5px;
+}
+
+#network {
+    padding: 0 10px 0 1.9px;
+}
+
+#network.disconnected {
+    color: #424242;
+}
+
+#workspaces button {
+    padding: 0 3px;
+    color: white;
+    border-bottom: 3px solid transparent;
+    min-width: 20px;
+}
+
+#workspaces button.visible {
+    border-bottom: 3px solid @primecolor;
+    background: #282828;
+}
+
+#workspaces button.urgent {
+    border-bottom: 3px solid #900000;
+}
+
+#workspaces button:hover {
+    box-shadow: none;
+    background: #3f3f3f;
+}
+
+#custom-clock-long {
+    border-bottom: 3px solid #0a6cf5;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#scratchpad {
+    margin-left: 2px;
+}
+
+#custom-clock-short {
+    border-bottom: 3px solid #0a6cf5;
+    margin-left: 2px;
+    margin-right: 3px;
+}
+
+#memory {
+    border-bottom: 3px solid #4bffdc;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#custom-vram {
+    border-bottom: 3px solid #33FF00;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#cpu {
+    border-bottom: 3px solid #f90000;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#custom-media {
+    border-bottom: 3px solid #ffb066;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#custom-media.paused {
+    color: #888;
+}
+
+#custom-weather {
+    border-bottom: 3px solid @primecolor;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#custom-notifs {
+    border-bottom: 3px solid @primecolor;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#custom-notifs.disabled {
+    color: #888;
+}
+
+.updates {
+    border-bottom: 3px solid @primecolor;
+    margin-left: 2px;
+    margin-right: 5px;
+}
+
+#pulseaudio {
+    margin-right: 5px;
+}
+
+#pulseaudio.muted {
+    color: #424242;
+}

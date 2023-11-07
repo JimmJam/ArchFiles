@@ -1,0 +1,273 @@
+[{
+    // Bar 1
+    "name": "bar1",
+    "position": "top",
+    "layer": "bottom",
+    "output": "HDMI-A-1",
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-right": ["pulseaudio", "custom/updates", "cpu", "memory", "custom/vram", "custom/clock-long", "gamemode", "sway/scratchpad", "tray", "network"],
+
+    "sway/workspaces": {
+	"format": "{name}",
+	"enable-bar-scroll": true,
+        "warp-on-scroll": false,
+	"disable-scroll-wraparound": true
+    },
+
+    "sway/window": {
+        "icon": true,
+	"icon-size": 15,
+	"all-outputs": true,
+        "tooltip": false,
+	"rewrite": {
+	   "(.*) — LibreWolf": "   $1",
+	   "LibreWolf": "   LibreWolf",
+	   "(.*) - YouTube — LibreWolf": "󰗃   $1"
+	}
+    },
+
+    "pulseaudio": {
+        "format": "{icon}   {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": " muted",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+	"on-click-middle": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 100%",
+	"on-click-right": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 60%",
+	"ignored-sinks": ["Easy Effects Sink","USB FS AUDIO Analog Stereo"]
+    },
+
+    "custom/updates": {
+    	"class": "updates",
+	"exec": "~/.config/sway/waybar/scripts/package-manager/count-updates.sh",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 600,
+	"on-click": "kitty --class=float --title 'Update' -o font_size=13 ~/.config/sway/scripts/tools/full-update.sh",
+	"on-click-middle": "kitty --class=float --title 'Remove Orphaned Packages' -o font_size=13 ~/.config/sway/waybar/scripts/package-manager/clear-orphans.sh",
+	"on-click-right": "kitty --class=float --title 'Remove cached packages' -o font_size=13 ~/.config/sway/waybar/scripts/package-manager/remove-cached.sh"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+	"interval": 3
+    },
+
+    "memory": {
+        "format": "  {used}G",
+        "tooltip": false
+    },
+
+    "custom/vram": {
+	"exec": "~/.config/sway/waybar/scripts/vram.sh",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 3
+    },
+
+    "custom/clock-long": {
+	"exec": "~/.config/sway/waybar/scripts/clock-long.sh",
+	"on-click": "wl-copy $(date \"+%Y-%m-%d-%H%M%S\"); notify-send \"Date copied.\"",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 1,
+        "tooltip": true
+    },
+
+    "gamemode": {
+        "format": "{glyph}",
+        "glyph": "󰖺",
+        "hide-not-running": true,
+        "use-icon": true,
+        "icon-spacing": 3,
+        "icon-size": 19,
+        "tooltip": true,
+        "tooltip-format": "Gamemode: On"
+    },
+
+    "sway/scratchpad": {
+        "format": "   {count}",
+        "show-empty": false,
+        "tooltip": true,
+        "tooltip-format": "{title}"
+    },
+
+    "tray": {
+        "spacing": 5
+    },
+
+    "network": {
+        "interface": "enp42s0",
+        //"interface": "enp15s0",
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": "󰈀",
+        "format-disconnected": "󰖪",
+	"format-linked": "",
+        "tooltip-format-wifi": "{essid} ({signalStrength}%) \n{ifname}",
+        "tooltip-format-ethernet": "{ipaddr}\n{ifname} ",
+	"tooltip-format-disconnected": "Disconnected"
+    }
+},{
+    // Bar 2
+    "name": "bar2",
+    "position": "top",
+    "layer": "bottom",
+    "output": "DP-1",
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-right": ["pulseaudio", "custom/media", "custom/notifs", "cpu", "memory", "custom/vram", "custom/clock-long"],
+
+    "sway/workspaces": {
+	   "format": "{name}",
+	   "enable-bar-scroll": true,
+           "warp-on-scroll": false,
+	   "disable-scroll-wraparound": true
+    },
+
+    "sway/window": {
+        "icon": true,
+	"icon-size": 15,
+	"all-outputs": true,
+        "tooltip": false,
+	"rewrite": {
+	   "(.*) — LibreWolf": "   $1",
+	   "LibreWolf": "   LibreWolf",
+	   "(.*) - YouTube — LibreWolf": "󰗃   $1"
+	}
+    },
+
+    "pulseaudio": {
+        "format": "{icon}   {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": " muted",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+	"on-click-middle": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 100%",
+	"on-click-right": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 60%",
+	"ignored-sinks": ["Easy Effects Sink","USB FS AUDIO Analog Stereo"]
+    },
+
+    "custom/media": {
+	"exec-if": "playerctl --player=mpv status",
+        "exec": "~/.config/sway/waybar/scripts/playerctl-meta-mpv.sh",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 2,
+	"max-length": 30,
+        "on-click": "playerctl --player=mpv play-pause",
+	"on-click-middle": "pkill -9 mpv"
+    },
+
+    "custom/notifs": {
+        "exec": "~/.config/sway/waybar/scripts/notif-status.sh",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 2,
+        "on-click": "~/.config/sway/scripts/desktop/notif-toggle.sh"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+	"interval": 3
+    },
+
+    "memory": {
+        "format": "  {used}G",
+        "tooltip": false
+    },
+
+    "custom/vram": {
+	"exec": "~/.config/sway/waybar/scripts/vram.sh",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 3
+    },
+
+    "custom/clock-long": {
+	"exec": "~/.config/sway/waybar/scripts/clock-long.sh",
+	"on-click": "wl-copy $(date \"+%Y-%m-%d-%H%M%S\"); notify-send \"Date copied.\"",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 1,
+        "tooltip": true
+    }
+},{
+    // Bar 3
+    "name": "bar3",
+    "position": "top",
+    "layer": "bottom",
+    "output": "DP-2",
+    "modules-left": ["sway/workspaces", "sway/window"],
+    "modules-right": [ "pulseaudio", "custom/weather", "cpu", "memory", "custom/vram", "custom/clock-short"],
+
+    "sway/workspaces": {
+	   "format": "{name}",
+	   "enable-bar-scroll": true,
+           "warp-on-scroll": false,
+	   "disable-scroll-wraparound": true
+    },
+
+    "sway/window": {
+        "icon": true,
+	"icon-size": 15,
+	"all-outputs": true,
+        "tooltip": false,
+	"rewrite": {
+	   "(.*) — LibreWolf": "   $1",
+	   "LibreWolf": "   LibreWolf",
+	   "(.*) - YouTube — LibreWolf": "󰗃   $1"
+	}
+    },
+
+    "pulseaudio": {
+        "format": "{icon}   {volume}%",
+        "format-bluetooth": "{icon}  {volume}%",
+        "format-muted": " muted",
+        "format-icons": {
+            "headphone": "",
+            "default": ["", ""]
+        },
+        "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
+	"on-click-middle": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 100%",
+	"on-click-right": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 60%",
+	"ignored-sinks": ["Easy Effects Sink","USB FS AUDIO Analog Stereo"]
+    },
+
+    "custom/weather": {
+        "exec": "~/.config/sway/waybar/scripts/weather.sh",
+	"format": "<span font_size='11pt'>{}</span>",
+	"return-type": "json",
+	"on-click": "librewolf https://openweathermap.org/city/6173577",
+	"interval": 150
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+	"interval": 3
+    },
+
+    "memory": {
+        "format": "  {used}G",
+        "tooltip": false
+    },
+
+    "custom/vram": {
+	"exec": "~/.config/sway/waybar/scripts/vram.sh",
+	"format": "{}",
+	"return-type": "json",
+	"interval": 5
+    },
+
+    "custom/clock-short": {
+	"exec": "echo '  '$(date +'%l:%M%p' | sed 's/^ //')",
+	"on-click": "wl-copy $(date \"+%Y-%m-%d-%H%M%S\"); notify-send \"Date copied.\"",
+	"interval": 60,
+	"tooltip": false
+    }
+}]
+// vi:syntax=json:

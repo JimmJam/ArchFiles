@@ -1,0 +1,24 @@
+# Get the distro name from os-release
+GRUB_DISTRIBUTOR="$(awk -F'"' '/PRETTY_NAME/ && tolower($2) \
+!= "linux" {print toupper(substr($2, 1, 1)) substr($2, 2)}' \
+/etc/os-release | awk '{print $1}')"
+
+# Set the default kernel parameters
+GRUB_CMDLINE_LINUX_DEFAULT="nvidia_drm.modeset=1 \
+modprobe.blacklist=pcspkr amd_iommu=on iommu=pt transparent_hugepage=never \
+irqpoll pci=routeirq kvm_amd nested=1 allow_unsafe_interrupts=1 kvm \
+ignore_msrs=1 pcie_acs_override=downstream,multifunction pci=noats"
+
+# Add two entries to booth exclusing either GPU
+export PRIMARY="pci-stub.ids=10de:13c2,10de:0fbb"
+export SECONDARY="pci-stub.ids=10de:2504,10de:228e"
+
+# Set the Grub theming options
+GRUB_GFXMODE=1920x1080
+GRUB_THEME="/boot/grub/themes/MSI/theme.txt"
+
+# Enable OS prober to detect another OS
+GRUB_DISABLE_OS_PROBER="false"
+
+# Save the last booted entry as the default
+GRUB_SAVEDEFAULT="true"

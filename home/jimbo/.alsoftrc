@@ -1,0 +1,6 @@
+drivers=pulse
+hrtf = true
+dsp_slow_cpu 1
+dsp_enhance_stereo 0
+snd_pitchquality 1
+snd_spatialize_roundrobin 1

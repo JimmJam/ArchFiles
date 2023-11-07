@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# NVIDIA/AMD variables
+export LIBVA_DRIVER_NAME=nvidia
+export GBM_BACKEND=nvidia-drm
+export __GLX_VENDOR_LIBRARY_NAME=nvidia
+export WLR_NO_HARDWARE_CURSORS=1
+
+# Sway/Wayland
+export XDG_CURRENT_DESKTOP=sway
+export XDG_SESSION_DESKTOP=sway
+export QT_QPA_PLATFORM=wayland
+export QT_QPA_PLATFORMTHEME=gtk2
+export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+# OpenGL Variables
+export __GL_GSYNC_ALLOWED=0
+export __GL_VRR_ALLOWED=0
+
+# Extras
+export MOZ_ENABLE_WAYLAND=1
+export SSH_AUTH_SOCK
+
+# Define colors for other programs
+export primecol="$(grep 'set $primecol' ~/.config/sway/theme | awk '{print $3}')"
+export accentcol="$(grep 'set $accentcol' ~/.config/sway/theme | awk '{print $3}')"
+export splitcol="$(grep 'set $splitcol' ~/.config/sway/theme | awk '{print $3}')"
+export darkcol="$(grep 'set $darkcol' ~/.config/sway/theme | awk '{print $3}')"
+export urgentcol="$(grep 'set $urgentcol' ~/.config/sway/theme | awk '{print $3}')"
+export realwhite="$(grep 'set $realwhite' ~/.config/sway/theme | awk '{print $3}')"
+
+# Define variables for scripts
+export swaycfg=~/.config/sway
+export alarmfolder=$swaycfg/scripts/desktop/alarms
+export deskscripts=$swaycfg/scripts/desktop
+export waybarcfg=$swaycfg/waybar
+export bescripts=~/.config/sway/scripts/bemenu
+export bmen='bemenu --fn "Ubuntu 13" --nb "$darkcol" --ab "$darkcol" --tb "$primecol" --fb "$darkcol" --tf "#FFFFFF" --hf "#FFFFFF" --hb "$primecol" -f --ignorecase --hp 8 -p'
